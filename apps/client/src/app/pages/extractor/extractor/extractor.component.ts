@@ -106,7 +106,8 @@ export class ExtractorComponent {
               return notebookDivision[key].pages.includes(tab.id);
             });
             const division = notebookDivision[(tab as any).divisionId];
-            (tab as any).requiredForAchievement = /\d{1,2}-\d{1,2}/.test(division.name.en) || division.name.en.startsWith('Housing');
+            (tab as any).requiredForAchievement = /\d{1,2}-\d{1,2}/.test(division.name.en) || division.name.en.startsWith('Fixtures') ||
+              division.name.en.indexOf('Furnishings') > -1 || division.name.en.startsWith('Table') || division.name.en.startsWith('Wall-mounted');
             tab.items = tab.items.map(item => {
               (item as any).nodes = getItemSource(extracts[item.itemId], DataType.GATHERED_BY).nodes
                 .slice(0, 3)
